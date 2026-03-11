@@ -1,12 +1,21 @@
+<h1>Home</h1>
+@if(flights().length > 0){
 <ul>
     @for(f of flights(); track $index){
-        <li>
+    <li>
         <h3>{{f.destination}}</h3>
         <ul>
             <li>ID: <strong>{{f.id}}</strong></li>
             <li>Broj leta: <strong>{{f.flightNumber}}</strong></li>
             <li>Vreme: <strong>{{f.scheduledAt}}</strong></li>
+            <li><a [routerLink]="`/details/${f.id}`">Detalji</a></li>
         </ul>
     </li>
     }
 </ul>
+
+}
+@else {
+<h3>Podaci se ucitavaju</h3>
+<p>Molim sacekajte...</p>
+}
