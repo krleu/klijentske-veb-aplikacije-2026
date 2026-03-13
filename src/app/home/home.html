@@ -1,19 +1,21 @@
 <h1>Home</h1>
-@if(flights().length > 0){
-<ul>
-    @for(f of flights(); track $index){
-    <li>
-        <h3>{{f.destination}}</h3>
-        <ul>
-            <li>ID: <strong>{{f.id}}</strong></li>
-            <li>Broj leta: <strong>{{f.flightNumber}}</strong></li>
-            <li>Vreme: <strong>{{f.scheduledAt}}</strong></li>
-            <li><a [routerLink]="`/details/${f.id}`">Detalji</a></li>
-        </ul>
-    </li>
+@if(toys().length > 0){
+<div class="card-wrapper">
+    @for(t of toys(); track $index){
+    <mat-card class="toy-card" appearance="outlined">
+        <img mat-card-image [src]="utils.getImageUrl(t)" [alt]="t.name">
+        <mat-card-content>
+            <h3>Category: {{t.type.name}}</h3>
+            <p>Production date: {{utils.formatDate(t.productionDate)}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a [routerLink]="`/details/${t.toyId}`" matButton>
+                <mat-icon fontIcon="description"></mat-icon>Details
+            </a>
+        </mat-card-actions>
+    </mat-card>
     }
-</ul>
-
+</div>
 }
 @else {
 <h3>Podaci se ucitavaju</h3>

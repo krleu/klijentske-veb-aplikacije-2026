@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToyModel } from '../../models/toy.model';
+import axios from 'axios';
 
 @Component({
   selector: 'app-details',
@@ -8,8 +10,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './details.css',
 })
 export class Details {
-  id = signal(null)
+  toy = signal<ToyModel | null>(null)
+
   constructor(route: ActivatedRoute) {
-    route.params.subscribe(params => this.id.set(params['id']))
+    route.params.subscribe(params => {
+      const id = params['id']
+      axios.get(`https://toy.pequla.com/api/toy/${id}`)
+        .then(rsp => this.toy.set(rsp.data))
+    })
   }
 }

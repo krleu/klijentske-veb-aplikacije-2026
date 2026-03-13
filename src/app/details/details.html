@@ -1,2 +1,11 @@
-<p>details works!</p>
-<p>ID: {{id()}}</p>
+@if(toy()) {
+  <ul>
+    <li>ID: {{toy()?.toyId}}</li>
+    <li>Name: {{toy()?.name}}</li>
+    <li>Category: {{toy()?.type?.name}}</li>
+    <li>Price: {{toy()?.price}} RSD</li>
+    <li>Production Date: {{toy()?.productionDate}}</li>
+    <li>Target Group: {{toy()?.targetGroup}}</li>
+    <li>Description: {{toy()?.description}}</li>
+  </ul>
+}
