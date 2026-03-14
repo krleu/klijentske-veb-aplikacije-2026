@@ -1,23 +1,31 @@
-<h1>Home</h1>
 @if(toys().length > 0){
 <div class="card-wrapper">
     @for(t of toys(); track $index){
     <mat-card class="toy-card" appearance="outlined">
         <img mat-card-image [src]="utils.getImageUrl(t)" [alt]="t.name">
-        <mat-card-content>
-            <h3>Category: {{t.type.name}}</h3>
-            <p>Production date: {{utils.formatDate(t.productionDate)}}</p>
+        <mat-card-content class="card-content">
+            <mat-card-title>
+                <strong>{{t.type.name}}</strong>
+            </mat-card-title>
+            <mat-card-subtitle>Production date: {{utils.formatDate(t.productionDate)}}</mat-card-subtitle>
         </mat-card-content>
-        <mat-card-actions>
-            <a [routerLink]="`/details/${t.toyId}`" matButton>
-                <mat-icon fontIcon="description"></mat-icon>Details
-            </a>
-        </mat-card-actions>
+        <mat-card-footer>
+            <mat-card-actions>
+                <a [routerLink]="`/details/${t.toyId}`" matButton>
+                    <mat-icon fontIcon="description"></mat-icon>Details
+                </a>
+            </mat-card-actions>
+        </mat-card-footer>
     </mat-card>
     }
 </div>
 }
 @else {
-<h3>Podaci se ucitavaju</h3>
-<p>Molim sacekajte...</p>
+<mat-card class="card-loading">
+    <img src="/loading.gif" alt="" class="loading-pic">
+    <mat-card-content>
+        <h3>Podaci se ucitavaju</h3>
+        <p>Molim sacekajte...</p>
+    </mat-card-content>
+</mat-card>
 }

@@ -1,11 +1,47 @@
 @if(toy()) {
-  <ul>
-    <li>ID: {{toy()?.toyId}}</li>
-    <li>Name: {{toy()?.name}}</li>
-    <li>Category: {{toy()?.type?.name}}</li>
-    <li>Price: {{toy()?.price}} RSD</li>
-    <li>Production Date: {{toy()?.productionDate}}</li>
-    <li>Target Group: {{toy()?.targetGroup}}</li>
-    <li>Description: {{toy()?.description}}</li>
-  </ul>
+<mat-card class="details-card">
+  <div class="card-content">
+    <div class="pic-section">
+      <img [src]="utils.getImageUrl(toy()!)" class="pic-details">
+    </div>
+
+    <div class="text-section">
+      <h1 class="naslov">{{toy()?.name}}</h1>
+      <mat-list>
+        <mat-list-item>
+          <span matListItemTitle><strong>Sifra proizvoda:</strong></span>
+          <span>{{toy()?.toyId}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle><strong>Opis:</strong></span>
+          <span>{{toy()?.description}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle><strong>Kategorija:</strong></span>
+          <span>{{toy()?.type?.name}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle><strong>Uzrast:</strong></span>
+          <span matListItemLine>{{toy()?.targetGroup}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Cena:</span>
+          <span class="cena"><strong>{{toy()?.price | number:'1.2-2'}} RSD</strong></span>
+        </mat-list-item>
+      </mat-list>
+      <div class="action-container">
+        <a mat-flat-button class="dugmeKupovina" color="primary" href="https://www.google.com/" target="_blank">
+          Dodaj u korpu
+        </a>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<mat-card class="map-card">
+  <mat-card-content>
+    <iframe width="100%" height="520px" style="border:0" loading="lazy" allowfullscreen
+      src="https://www.google.com/maps?q=Belgrade&output=embed">
+    </iframe>
+  </mat-card-content>
+</mat-card>
 }
