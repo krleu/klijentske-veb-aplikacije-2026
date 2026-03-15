@@ -29,11 +29,13 @@
           <span class="cena"><strong>{{toy()?.price | number:'1.2-2'}} RSD</strong></span>
         </mat-list-item>
       </mat-list>
-      <div class="action-container">
-        <a mat-flat-button class="dugmeKupovina" color="primary" href="https://www.google.com/" target="_blank">
-          Dodaj u korpu
+      @if(service.getActiveUser()){
+      <mat-card-actions>
+        <a [routerLink]="`/details/${toy()?.toyId}/buy`" matButton>
+          <mat-icon fontIcon="shopping_cart" />Buy now
         </a>
-      </div>
+      </mat-card-actions>
+      }
     </div>
   </div>
 </mat-card>

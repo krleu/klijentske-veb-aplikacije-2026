@@ -12,11 +12,11 @@
 
 .pic-section {
    width: 50%;
+   line-height: 0;
 }
 
 .text-section {
    width: 50%;
-   padding: 24px;
 }
 
 .pic-details {

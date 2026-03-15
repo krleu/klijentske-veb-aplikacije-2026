@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ToyModel } from '../../models/toy.model';
 import axios from 'axios';
 import { Utils } from '../utils';
@@ -8,15 +8,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
   selector: 'app-details',
-  imports: [MatCardModule,MatListModule, CommonModule,MatButtonModule],
+  imports: [MatCardModule, MatListModule, CommonModule, MatButtonModule,MatIconModule,RouterLink],
   templateUrl: './details.html',
   styleUrl: './details.css',
 })
 export class Details {
+  public service = AuthService
   toy = signal<ToyModel | null>(null)
 
   constructor(route: ActivatedRoute, public utils: Utils) {

@@ -13,7 +13,7 @@ import { AuthService } from './services/auth.service';
   styleUrl: './app.css'
 })
 export class App {
-  activeUser = AuthService.getActiveUser()
+  public service = AuthService
 
   constructor(private router: Router){
 

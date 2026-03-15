@@ -1,16 +1,18 @@
 .toy-card{
-    width: 240px;
-}
-
-.card-wrapper{
+    height: 35y0px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px;
+    flex-direction: column;
 }
-
 .card-content{
-    margin-top: 10px;
+    margin-top: 15px;
+    flex: 1;
+    align-items: center;
+    text-align: center;
+}
+.center{
+   display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
 .card-loading{
@@ -25,3 +27,14 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    gap: 10px;
+}
+.toy-card img {
+    height: 200px;
+    object-fit: cover;
+}
+

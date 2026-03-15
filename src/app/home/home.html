@@ -5,15 +5,20 @@
         <img mat-card-image [src]="utils.getImageUrl(t)" [alt]="t.name">
         <mat-card-content class="card-content">
             <mat-card-title>
-                <strong>{{t.type.name}}</strong>
+                <strong>{{t.name}}</strong>
             </mat-card-title>
             <mat-card-subtitle>Production date: {{utils.formatDate(t.productionDate)}}</mat-card-subtitle>
         </mat-card-content>
         <mat-card-footer>
-            <mat-card-actions>
+            <mat-card-actions class="center">
                 <a [routerLink]="`/details/${t.toyId}`" matButton>
                     <mat-icon fontIcon="description"></mat-icon>Details
                 </a>
+                @if(service.getActiveUser()){
+                    <a [routerLink]="`/details/${t.toyId}/buy`" matButton>
+                    <mat-icon fontIcon="shopping_cart"></mat-icon>Buy now
+                </a>
+                }
             </mat-card-actions>
         </mat-card-footer>
     </mat-card>
