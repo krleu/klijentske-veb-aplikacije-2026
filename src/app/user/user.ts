@@ -8,10 +8,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import axios from 'axios'; 
 import {MatSelectModule} from '@angular/material/select';
+import { Loading } from '../loading/loading';
 
 @Component({
   selector: 'app-user',
-  imports: [MatCardModule, MatInputModule, MatButtonModule, MatIconModule,FormsModule,MatSelectModule],
+  imports: [MatCardModule, MatInputModule, MatButtonModule, MatIconModule,FormsModule,MatSelectModule,Loading],
   templateUrl: './user.html',
   styleUrl: './user.css',
 })
@@ -27,5 +28,10 @@ export class User {
 
     axios.get('https://toy.pequla.com/api/type')
     .then(rsp=>this.favToy.set(rsp.data))
+  }
+
+  updateUser(){
+    AuthService.updateActiveUser(this.activeUser!)
+    alert('User updated successfuly')
   }
 }

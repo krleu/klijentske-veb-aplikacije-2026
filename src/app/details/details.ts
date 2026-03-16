@@ -9,11 +9,12 @@ import {MatListModule} from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../services/auth.service';
+import { Loading } from '../loading/loading';
 
 
 @Component({
   selector: 'app-details',
-  imports: [MatCardModule, MatListModule, CommonModule, MatButtonModule,MatIconModule,RouterLink],
+  imports: [MatCardModule, MatListModule, CommonModule, MatButtonModule,MatIconModule,RouterLink,Loading],
   templateUrl: './details.html',
   styleUrl: './details.css',
 })
