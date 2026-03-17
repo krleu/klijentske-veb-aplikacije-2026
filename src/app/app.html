@@ -1,21 +1,64 @@
 <mat-toolbar color="primary">
   <span>
-    <strong><mat-icon fontIcon="toys" class="main-icon" /> Prodavnica Igračaka </strong><mat-icon fontIcon="toys" class="main-icon" />
+    <strong><mat-icon fontIcon="toys" class="main-icon"></mat-icon> Prodavnica Igračaka </strong>
+    <mat-icon fontIcon="toys" class="main-icon"></mat-icon>
   </span>
-  <span class="spacer"></span>
-  <a routerLink="/" matButton><mat-icon fontIcon="home" />Početna</a>
-  <a routerLink="/about" matButton><mat-icon fontIcon="info" />O nama</a>
-  @if(service.getActiveUser()){
-    <a routerLink="/user" matButton><mat-icon fontIcon="account_circle" />Profil</a>
-    <a routerLink="/orders" mat-button><mat-icon fontIcon="shopping_bag" />Porudzbine</a>
-    <a routerLink="/cart" mat-button><mat-icon fontIcon="shopping_cart" />Korpa</a>
-    <button matButton (click)="doLogout()"><mat-icon fontIcon="logout" />Odjavi se</button>
 
-  }@else {
-    <a routerLink="/login" matButton><mat-icon fontIcon="login" />Prijava</a>
-    <a routerLink="/signup" matButton><mat-icon fontIcon="login" />Registruj se</a>
-  }
+  <span class="spacer"></span>
+
+  <div class="desktop-nav">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/">
+        <mat-icon>home</mat-icon> Početna
+      </button>
+      <button mat-menu-item routerLink="/about">
+        <mat-icon>info</mat-icon> O nama
+      </button>
+
+      @if(service.getActiveUser()){
+      <button mat-menu-item routerLink="/user">
+        <mat-icon>account_box</mat-icon> Profil
+      </button>
+      <button mat-menu-item routerLink="/orders">
+        <mat-icon>shopping_bag</mat-icon> Porudžbine
+      </button>
+      <button mat-menu-item routerLink="/cart">
+        <mat-icon>shopping_cart</mat-icon> Korpa
+      </button>
+      <button mat-menu-item (click)="doLogout()">
+        <mat-icon>logout</mat-icon> Odjavi se
+      </button>
+      } @else {
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>login</mat-icon> Prijava
+      </button>
+      <button mat-menu-item routerLink="/signup">
+        <mat-icon>app_registration</mat-icon> Registruj se
+      </button>
+      }
+    </mat-menu>
+
+    <div class="desktop-items">
+      <a routerLink="/" mat-button><mat-icon fontIcon="home"></mat-icon> Početna</a>
+      <a routerLink="/about" mat-button><mat-icon fontIcon="info"></mat-icon> O nama</a>
+
+      @if(service.getActiveUser()){
+      <a routerLink="/user" mat-button><mat-icon fontIcon="account_box"></mat-icon> Profil</a>
+      <a routerLink="/orders" mat-button><mat-icon fontIcon="shopping_bag"></mat-icon> Porudzbine</a>
+      <a routerLink="/cart" mat-button><mat-icon fontIcon="shopping_cart"></mat-icon> Korpa</a>
+      <button mat-button (click)="doLogout()"><mat-icon fontIcon="logout"></mat-icon> Odjavi se</button>
+      } @else {
+      <a routerLink="/login" mat-button><mat-icon fontIcon="login"></mat-icon> Prijava</a>
+      <a routerLink="/signup" mat-button><mat-icon fontIcon="app_registration"></mat-icon> Registruj se</a>
+      }
+    </div>
+  </div>
 </mat-toolbar>
+
 <div class="wrapper">
-  <router-outlet />
+  <router-outlet></router-outlet>
 </div>

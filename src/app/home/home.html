@@ -1,18 +1,57 @@
 @if(toys().length > 0){
+<div class="filters">
+    <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [(ngModel)]="search" (keyup)="filter()">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Omiljena kategorija igračaka</mat-label>
+        <mat-select [(ngModel)]="type" name="toy" (selectionChange)="filter()">
+            @for (f of getCategory(); track f.typeId) {
+            <mat-option [value]="f.name">{{ f.name }}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Uzrast</mat-label>
+        <mat-select [(ngModel)]="ageRange" name="toy" (selectionChange)="filter()">
+            @for (f of getAgeRanges(); track f.ageGroupId) {
+            <mat-option [value]="f.name">{{ f.name }}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Pol</mat-label>
+        <mat-select [(ngModel)]="targetGroup" name="toy" (selectionChange)="filter()">
+            @for (f of getTargetGroups(); track f) {
+            <mat-option [value]="f">{{f}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Cena do</mat-label>
+        <input matInput type="number" [(ngModel)]="priceTo" (input)="filter()" min="0" step="100">
+    </mat-form-field>
+    <button mat-flat-button class="reset-filters" (click)="resetFilters()">
+        <mat-icon>filter_alt_off</mat-icon>
+        Resetuj filtere
+    </button>
+</div>
 <div class="card-wrapper">
-    @for(t of toys(); track $index){
+    @for(t of filteredToys(); track $index){
     <mat-card class="toy-card" appearance="outlined">
         <img mat-card-image [src]="utils.getImageUrl(t)" [alt]="t.name">
         <mat-card-content class="card-content">
             <mat-card-title>
                 <strong>{{t.name}}</strong>
             </mat-card-title>
-            <mat-card-subtitle class="cena-boja"><strong>Cena: {{utils.formatCena(t.price)}}</strong></mat-card-subtitle>
+            <mat-card-subtitle class="cena-boja"><strong>Cena:
+                    {{utils.formatCena(t.price)}}</strong></mat-card-subtitle>
         </mat-card-content>
         <mat-card-footer>
             <mat-card-actions class="center">
                 <a [routerLink]="`/details/${t.toyId}`" matButton>
-                    <mat-icon fontIcon="description"></mat-icon>Detalji
+                    <mat-icon fontIcon="pending"></mat-icon>Detalji
                 </a>
                 @if(service.getActiveUser()){
                 <mat-card-actions>

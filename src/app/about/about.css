@@ -1,0 +1,47 @@
+.about-kartica {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 120px auto 50px auto; 
+  width: 90%;
+  max-width: 600px;
+}
+
+ul {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  width: 100%;
+}
+
+h1 {
+  color: #222;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px; 
+}
+
+p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+li {
+  background: #f5f6fa;
+  color: #3f51b5;
+  margin: 10px 0;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+li:hover {
+  transform: translateX(5px);
+  background: #e8eaf6;
+}

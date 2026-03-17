@@ -7,3 +7,6 @@
 .full-width{
     max-width: 100%;
 }
+mat-card-header{
+    margin: 0 auto;
+}
