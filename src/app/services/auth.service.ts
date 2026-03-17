@@ -9,11 +9,11 @@ export class AuthService {
         const baseUser: UserModel = {
             email: 'user@example.com',
             password: 'user123',
-            firstName: 'Example',
-            lastName: 'User',
-            address: 'Street-12',
+            firstName: 'Uros',
+            lastName: 'Krstic',
+            address: 'Ulica-12',
             phone: '0600000000',
-            favToy: 'Puzzle',
+            favToy: 'Figura',
             orders: []
         }
         if (localStorage.getItem(USERS) == null) {
