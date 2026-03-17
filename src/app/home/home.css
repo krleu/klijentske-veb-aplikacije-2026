@@ -1,43 +1,74 @@
-.toy-card {
-    height: 35y0px;
-    display: flex;
-    flex-direction: column;
+.filters {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 20px auto;
+  width: 95%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
 }
 
-.card-content {
-    margin-top: 15px;
-    flex: 1;
-    align-items: center;
-    text-align: center;
-}
-
-.center {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-}
-
-.card-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px;
-}
-
-.toy-card img {
-    height: 200px;
-    object-fit: cover;
-}
-
-.cena-boja {
-    color: rgb(20, 60, 169);
+mat-form-field {
+  flex: 1 1 200px;
 }
 
 .reset-filters {
-    margin-left: 20px;
+  flex: 0 1 auto;
+  height: 56px;
+  margin-bottom: 20px;
+  background-color: #f44336;
+  color: white;
 }
 
-.filters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.toy-card {
+  width: 300px;
+  border: 1px solid #eee;
+}
+
+.toy-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.cena-boja {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.center {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .reset-filters {
+    margin-bottom: 0;
+  }
+
+  .toy-card {
+    width: 100%;
+  }
 }
