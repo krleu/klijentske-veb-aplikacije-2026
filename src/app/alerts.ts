@@ -10,7 +10,7 @@ const matCustomClass = {
 export class Alerts {
     static success(text: string) {
         Swal.fire({
-            title: 'Success',
+            title: 'Uspešno',
             text,
             icon: 'success',
             customClass:matCustomClass
@@ -18,7 +18,7 @@ export class Alerts {
     }
     static error(text: string) {
         Swal.fire({
-            title: 'Error',
+            title: 'Greska',
             text,
             icon: 'error'
         })
@@ -26,13 +26,13 @@ export class Alerts {
 
     static confirm(text: string, callback: Function) {
         Swal.fire({
-            title: "Are you sure?",
+            title: "Da li ste sigurni?",
             text,
             icon: "question",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes!",
+            confirmButtonText: "Da!",
             customClass:matCustomClass
         }).then((result) => {
             if (result.isConfirmed) {

@@ -12,12 +12,12 @@
         <mat-card-footer>
             <mat-card-actions class="center">
                 <a [routerLink]="`/details/${t.toyId}`" matButton>
-                    <mat-icon fontIcon="description"></mat-icon>Details
+                    <mat-icon fontIcon="description"></mat-icon>Detalji
                 </a>
                 @if(service.getActiveUser()){
                 <mat-card-actions>
                     <button matButton (click)="addToCart(t)">
-                        <mat-icon fontIcon="shopping_cart" />Buy now
+                        <mat-icon fontIcon="shopping_cart" />Kupi odmah
                     </button>
                 </mat-card-actions>
                 }

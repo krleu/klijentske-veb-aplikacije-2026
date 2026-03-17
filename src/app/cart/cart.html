@@ -2,7 +2,7 @@
 <div class="cart-wrapper">
     @for(item of items(); track $index){
     <mat-card class="cart-card" appearance="outlined">
-        <img mat-card-image [src]="utils.getImageUrl(item.toy)" [alt]="item.toy.name">
+        <img mat-card-image [src]="utils.getImageUrl(item.toy)" [alt]="item.toy.name" class="cart-img-toy">
         <mat-card-content class="card-content">
             <mat-card-title>
                 <strong>{{item.toy.name}}</strong>
@@ -58,7 +58,7 @@
                 }
                 @if(canEdit(item)){
                 <button matButton class="dugmeIzmeni" (click)="izmeni(item)">
-                    <mat-icon fontIcon="edit"></mat-icon> Otkazi
+                    <mat-icon fontIcon="delete"></mat-icon> Otkazi
                 </button>
                 }
             </mat-card-actions>
@@ -68,7 +68,7 @@
     <div class="total">
         <strong>Ukupno: {{getTotalPrice()}} RSD</strong>
         <button matButton (click)="plati()" class="dugmePlati">
-            <mat-icon fontIcon="payment"></mat-icon> Plati sve
+            <mat-icon fontIcon="payment"></mat-icon> Plati
         </button>
     </div>
 </div>

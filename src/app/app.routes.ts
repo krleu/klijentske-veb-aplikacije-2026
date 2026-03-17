@@ -6,6 +6,7 @@ import { Login } from './login/login';
 import { User } from './user/user';
 import { Orders } from './orders/orders';
 import { Cart } from './cart/cart';
+import { Signup } from './signup/signup';
 
 
 export const routes: Routes = [
@@ -15,6 +16,7 @@ export const routes: Routes = [
     { path: 'login', component: Login },
     { path: 'user', component: User },
     { path: 'cart', component: Cart},
-    { path: 'orders', component: Orders }
+    { path: 'orders', component: Orders },
+    { path: 'signup', component: Signup }
 
 ];

@@ -21,7 +21,7 @@ export class Cart {
   }
 
   refresh() {
-    this.items.set(CartService.getCart().filter(i => i.status !== 'otkazano'))
+    this.items.set(CartService.getCart().filter(i => i.status === 'rezervisano'))
   }
 
   remove(toyId: number) {
@@ -62,12 +62,14 @@ export class Cart {
   }
 
   plati() {
-    Alerts.confirm('Da li ste sigurni da želite da platite sve?', () => {
+    Alerts.confirm('Nastavi sa placanjem?', () => {
       const rezervisano = this.items().filter(i => i.status === 'rezervisano')
       for (const item of rezervisano) {
         CartService.updateItem(item.toy.toyId, { status: 'pristiglo' })
       }
       this.refresh()
+      Alerts.success('Uspešno plaćanje!')
     })
+
   }
 }

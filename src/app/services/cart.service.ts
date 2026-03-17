@@ -16,14 +16,19 @@ export class CartService {
   }
 
   static addToCart(toy: ToyModel): boolean {
-
     const user = AuthService.getActiveUser()
     if (!user) return false
 
-    const already = user.orders.find((o: CartItem) => o.toy.toyId === toy.toyId)
-    if (already) return false
+    const postoji = user.orders.find((o: CartItem) => o.toy.toyId === toy.toyId)
 
-    user.orders.push({ toy: toy, status: 'rezervisano', amount: 1 })
+    if (postoji) {
+      if (postoji.status === 'rezervisano') return false
+      postoji.status = 'rezervisano';
+      postoji.amount = 1;
+    } else {
+      user.orders.push({ toy: toy, status: 'rezervisano', amount: 1 })
+    }
+
     AuthService.updateActiveUser(user)
     return true
   }
@@ -37,12 +42,12 @@ export class CartService {
   }
 
   static isInCart(toyId: number): boolean {
-    return this.getCart().some(o => o.toy.toyId === toyId)
+    return this.getCart().some(o => o.toy.toyId === toyId && o.status === 'rezervisano')
   }
 
   static getTotalPrice(): number {
     return this.getCart()
-      .filter(o => o.status !== 'otkazano')
+      .filter(o => o.status === 'rezervisano')
       .reduce((sum, o) => sum + (o.toy.price * o.amount), 0)
   }
 
