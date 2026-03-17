@@ -10,3 +10,30 @@ body{
     max-width: 460px;
     margin: 0 auto;
 }
+
+.mat-swal-popup {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.mat-swal-title {
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0 0 8px 0;
+}
+
+.mat-swal-actions {
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.mat-swal-cancel {
+    background: transparent !important;
+    color: var(--mat-sys-primary) !important;
+}
+
+.mat-swal-confirm {
+    background: var(--mat-sys-primary) !important;
+    color: var(--mat-sys-on-primary) !important;
+}

@@ -7,7 +7,7 @@
             <mat-card-title>
                 <strong>{{t.name}}</strong>
             </mat-card-title>
-            <mat-card-subtitle>Production date: {{utils.formatDate(t.productionDate)}}</mat-card-subtitle>
+            <mat-card-subtitle class="cena-boja"><strong>Cena: {{utils.formatCena(t.price)}}</strong></mat-card-subtitle>
         </mat-card-content>
         <mat-card-footer>
             <mat-card-actions class="center">
@@ -15,9 +15,11 @@
                     <mat-icon fontIcon="description"></mat-icon>Details
                 </a>
                 @if(service.getActiveUser()){
-                    <a [routerLink]="`/details/${t.toyId}/buy`" matButton>
-                    <mat-icon fontIcon="shopping_cart"></mat-icon>Buy now
-                </a>
+                <mat-card-actions>
+                    <button matButton (click)="addToCart(t)">
+                        <mat-icon fontIcon="shopping_cart" />Buy now
+                    </button>
+                </mat-card-actions>
                 }
             </mat-card-actions>
         </mat-card-footer>
@@ -26,5 +28,5 @@
 </div>
 }
 @else {
-    <app-loading />
+<app-loading />
 }

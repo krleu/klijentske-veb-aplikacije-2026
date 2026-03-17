@@ -1,0 +1,82 @@
+@if(items().length > 0){
+<div class="cart-wrapper">
+    @for(item of items(); track $index){
+    <mat-card class="cart-card" appearance="outlined">
+        <img mat-card-image [src]="utils.getImageUrl(item.toy)" [alt]="item.toy.name">
+        <mat-card-content class="card-content">
+            <mat-card-title>
+                <strong>{{item.toy.name}}</strong>
+            </mat-card-title>
+            <mat-list>
+                <mat-list-item>
+                    <span matListItemTitle>Opis</span>
+                    <span>{{item.toy.description}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Tip</span>
+                    <span>{{item.toy.type.name}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Uzrast</span>
+                    <span>{{item.toy.ageGroup.name}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Ciljna grupa</span>
+                    <span>{{item.toy.targetGroup}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Datum proizvodnje</span>
+                    <span>{{utils.formatDate(item.toy.productionDate)}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Cena</span>
+                    <span>{{utils.formatCena(item.toy.price)}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Status</span>
+                    <span>{{item.status}}</span>
+                </mat-list-item>
+            </mat-list>
+            @if(item.status === 'rezervisano'){
+            <div class="amount-control">
+                <button matButton (click)="decreaseAmount(item)">
+                    <mat-icon fontIcon="remove"></mat-icon>
+                </button>
+                <span>{{item.amount}}</span>
+                <button matButton (click)="increaseAmount(item)">
+                    <mat-icon fontIcon="add"></mat-icon>
+                </button>
+            </div>
+            }
+        </mat-card-content>
+        <mat-card-footer>
+            <mat-card-actions class="center">
+                @if(canRemove(item)){
+                <button matButton class="dugmeUkloni" (click)="remove(item.toy.toyId)">
+                    <mat-icon fontIcon="delete"></mat-icon> Ukloni
+                </button>
+                }
+                @if(canEdit(item)){
+                <button matButton class="dugmeIzmeni" (click)="izmeni(item)">
+                    <mat-icon fontIcon="edit"></mat-icon> Otkazi
+                </button>
+                }
+            </mat-card-actions>
+        </mat-card-footer>
+    </mat-card>
+    }
+    <div class="total">
+        <strong>Ukupno: {{getTotalPrice()}} RSD</strong>
+        <button matButton (click)="plati()" class="dugmePlati">
+            <mat-icon fontIcon="payment"></mat-icon> Plati sve
+        </button>
+    </div>
+</div>
+}
+@else {
+<div class="prazna-korpa">
+    <mat-card appearance="outlined">
+        <p>Vaša korpa je prazna.</p>
+    </mat-card>
+</div>
+}

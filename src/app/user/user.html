@@ -1,45 +1,91 @@
 @if(activeUser && favToy().length > 0){
-<mat-card class="small-card">
-    <mat-card-header>
-        <h1>User Details</h1>
-    </mat-card-header>
-    <mat-card-content>
-        <div>
-            <mat-form-field class="full-width">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" [(ngModel)]="activeUser!.email" disabled>
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <mat-label>First name</mat-label>
-                <input matInput type="text" [(ngModel)]="activeUser!.firstName">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <mat-label>Last name</mat-label>
-                <input matInput type="text" [(ngModel)]="activeUser!.lastName">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <mat-label>Address</mat-label>
-                <input matInput type="text" [(ngModel)]="activeUser!.address">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <mat-label>Phone number</mat-label>
-                <input matInput type="text" [(ngModel)]="activeUser!.phone">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <mat-label>Favorite toy</mat-label>
-                <mat-select [(ngModel)]="activeUser!.favToy">
-                    @for (f of favToy(); track f.typeId) {
-                    <mat-option [value]="f.name">{{f.name}}</mat-option>
-                    }
-                </mat-select>
-            </mat-form-field>
-        </div>
-    </mat-card-content>
-    <mat-card-actions>
-        <button type="button" matButton (click)="updateUser()">
-            <mat-icon fontIcon="save" />Save Changes</button>
-    </mat-card-actions>
-</mat-card>
+<div class="user-wrap">
+    <mat-card class="user-card">
+        <mat-card-header>
+            <h1>User Details</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <div>
+                <mat-form-field class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" [(ngModel)]="activeUser!.email" disabled>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>First name</mat-label>
+                    <input matInput type="text" [(ngModel)]="activeUser!.firstName">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Last name</mat-label>
+                    <input matInput type="text" [(ngModel)]="activeUser!.lastName">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Address</mat-label>
+                    <input matInput type="text" [(ngModel)]="activeUser!.address">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Phone number</mat-label>
+                    <input matInput type="text" [(ngModel)]="activeUser!.phone">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Favorite toy</mat-label>
+                    <mat-select [(ngModel)]="activeUser!.favToy">
+                        @for (f of favToy(); track f.typeId) {
+                        <mat-option [value]="f.name">{{f.name}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="savebutton">
+            <button type="button" matButton (click)="updateUser()">
+                <mat-icon fontIcon="save" />Save Changes</button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card class="user-card">
+        <mat-card-header>
+            <h1>Change password</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <div>
+                <mat-form-field class="full-width">
+                    <mat-label>Old password</mat-label>
+                    <input matInput type="password" [(ngModel)]="oldPassword">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>New password</mat-label>
+                    <input matInput type="password" [(ngModel)]="newPassword">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Confirm password</mat-label>
+                    <input matInput type="password" [(ngModel)]="passConfirm">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="savebutton">
+            <button type="button" matButton (click)="updatePassword()">
+                <mat-icon fontIcon="save" />Change password</button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card class="user-card">
+        <mat-card-header>
+            <h1>Preporučujemo za vas</h1>
+        </mat-card-header>
+        <mat-card-content>
+            @for (toy of recommendedToys().slice(0,4); track toy.toyId) {
+            <div class="toy-item">
+                <div class="toy-info">
+                    <h3>{{toy.name}}</h3>
+                    <p>{{toy.description}}</p>
+                    <small>{{formatCena(toy.price)}} RSD</small>
+                </div>
+                <button mat-raised-button color="primary" (click)="viewToy(toy.toyId)">
+                    Detalji
+                </button>
+            </div>
+            }
+        </mat-card-content>
+    </mat-card>
+</div>
 }@else {
-    <app-loading />
+<app-loading />
 }

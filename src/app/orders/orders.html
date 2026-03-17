@@ -1,0 +1,66 @@
+<div class="orders-wrapper">
+
+    <h2>Rezervisano</h2>
+    @if(getRezervisano().length > 0){
+    <div class="card-wrapper">
+        @for(item of getRezervisano(); track $index){
+        <mat-card class="order-card" appearance="outlined">
+            <img mat-card-image [src]="utils.getImageUrl(item.toy)" [alt]="item.toy.name">
+            <mat-card-content class="card-content">
+                <mat-card-title>
+                    <strong>{{item.toy.name}}</strong>
+                </mat-card-title>
+                <mat-card-subtitle>Cena: {{item.toy.price}} RSD</mat-card-subtitle>
+                <mat-card-subtitle>Status: {{item.status}}</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+        }
+    </div>
+    } @else {
+    <p class="empty">Nema rezervisanih igračaka.</p>
+    }
+
+    <h2>Pristiglo</h2>
+    @if(getPristiglo().length > 0){
+    <div class="card-wrapper">
+        @for(item of getPristiglo(); track $index){
+        <mat-card class="order-card" appearance="outlined">
+            <img mat-card-image [src]="utils.getImageUrl(item.toy)" [alt]="item.toy.name">
+            <mat-card-content class="card-content">
+                <mat-card-title>
+                    <strong>{{item.toy.name}}</strong>
+                </mat-card-title>
+                <mat-card-subtitle>Cena: {{item.toy.price}} RSD</mat-card-subtitle>
+                <mat-card-subtitle>Status: {{item.status}}</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+        }
+    </div>
+    } @else {
+    <p class="empty">Nema pristiglih igračaka.</p>
+    }
+
+    <h2>Otkazano</h2>
+    @if(getOtkazano().length > 0){
+    <div class="card-wrapper">
+        @for(item of getOtkazano(); track $index){
+        <mat-card class="order-card" appearance="outlined">
+            <img mat-card-image [src]="utils.getImageUrl(item.toy)" [alt]="item.toy.name">
+            <mat-card-content class="card-content">
+                <mat-card-title>
+                    <strong>{{item.toy.name}}</strong>
+                </mat-card-title>
+                <mat-card-subtitle>Cena: {{item.toy.price}} RSD</mat-card-subtitle>
+                <mat-card-subtitle>Status: {{item.status}}</mat-card-subtitle>
+                <button matButton (click)="ponovoRezervisii(item)">
+                    <mat-icon fontIcon="refresh"></mat-icon> Ponovo rezerviši
+                </button>
+            </mat-card-content>
+        </mat-card>
+        }
+    </div>
+    } @else {
+    <p class="empty">Nema otkazanih igračaka.</p>
+    }
+
+</div>

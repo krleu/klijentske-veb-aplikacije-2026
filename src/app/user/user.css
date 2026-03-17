@@ -1,0 +1,47 @@
+.user-card {
+    width: 460px;
+}
+
+.user-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.savebutton {
+    justify-content: center;
+}
+
+.toy-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.toy-info {
+  flex: 1;
+  padding-right: 15px;
+}
+
+.toy-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+
+.toy-info p {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.toy-info small {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+mat-card-header{
+    justify-content: center;
+}

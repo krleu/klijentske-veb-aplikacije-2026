@@ -7,15 +7,15 @@ const ACTIVE = 'active'
 export class AuthService {
     static getUsers(): UserModel[] {
         const baseUser: UserModel = {
-                email: 'user@example.com',
-                password: 'user123',
-                firstName: 'Example',
-                lastName: 'User',
-                address: 'Street-12',
-                phone: '0600000000',
-                favToy: 'Puzzle',
-                orders: []
-            }
+            email: 'user@example.com',
+            password: 'user123',
+            firstName: 'Example',
+            lastName: 'User',
+            address: 'Street-12',
+            phone: '0600000000',
+            favToy: 'Puzzle',
+            orders: []
+        }
         if (localStorage.getItem(USERS) == null) {
             localStorage.setItem(USERS, JSON.stringify([baseUser]))
         }
@@ -42,7 +42,7 @@ export class AuthService {
         return null
     }
 
-    static updateActiveUser(newUserData:UserModel){
+    static updateActiveUser(newUserData: UserModel) {
         const users = this.getUsers()
         for (let u of users) {
             if (u.email === localStorage.getItem(ACTIVE)) {
@@ -51,12 +51,24 @@ export class AuthService {
                 u.address = newUserData.address
                 u.phone = newUserData.phone
                 u.favToy = newUserData.favToy
+                u.orders = newUserData.orders
             }
         }
         localStorage.setItem(USERS, JSON.stringify(users))
     }
-    
-    static logout(){
+
+    static updateActiveUserPassword(newPassword: string) {
+        const users = this.getUsers()
+        for (let u of users) {
+            if (u.email === localStorage.getItem(ACTIVE)) {
+                u.password = newPassword
+            }
+        }
+        localStorage.setItem(USERS, JSON.stringify(users))
+    }
+
+    static logout() {
         localStorage.removeItem(ACTIVE)
     }
+
 }

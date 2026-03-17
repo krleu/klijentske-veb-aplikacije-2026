@@ -1,0 +1,35 @@
+.orders-wrapper {
+    padding: 16px;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.order-card {
+    width: 250px;
+}
+
+.order-card img {
+    height: 160px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.empty {
+    color: gray;
+    font-style: italic;
+    margin-bottom: 24px;
+}
+
+h2 {
+    margin-bottom: 12px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+}

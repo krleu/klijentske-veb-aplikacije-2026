@@ -23,4 +23,5 @@ export class ToyService {
     static async get(){
         return await client.get<string[]>('/type')
     }
+    
 }

@@ -7,7 +7,10 @@
   <a routerLink="/about" matButton><mat-icon fontIcon="info" />About</a>
   @if(service.getActiveUser()){
     <a routerLink="/user" matButton><mat-icon fontIcon="account_circle" />Profile</a>
+    <a routerLink="/orders" mat-button><mat-icon fontIcon="shopping_bag" />Orders</a>
+    <a routerLink="/cart" mat-button><mat-icon fontIcon="shopping_cart" />Cart</a>
     <button matButton (click)="doLogout()"><mat-icon fontIcon="logout" />Logout</button>
+
   }@else {
     <a routerLink="/login" matButton><mat-icon fontIcon="login" />Login</a>
   }

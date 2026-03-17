@@ -1,9 +1,5 @@
-import { Injectable } from '@angular/core';
 import { ToyModel } from '../models/toy.model';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class Utils {
   formatDate(iso: string) {
     return new Date(iso).toLocaleString('sr-RS', {
@@ -12,7 +8,14 @@ export class Utils {
       day: "2-digit"
     })
   }
-  getImageUrl(toy: ToyModel){
+  getImageUrl(toy: ToyModel) {
     return 'https://toy.pequla.com' + toy.imageUrl;
+  }
+
+  formatCena(price: number): string {
+    return price.toLocaleString('sr-RS', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }) + ' RSD'
   }
 }
